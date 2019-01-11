@@ -36,53 +36,22 @@ public class LatinSquare {
 	}
 
 	/**
-	 * return LatinSquare instance attribute
+	 * ContainsZero - return 'true' if any element in the LatinSquare is a zero
 	 * 
 	 * @version 1.1
 	 * @since Lab #1
-	 * @return - returns the instance of the LatinSquare
+	 * @return - returns 'true' if any element in the LatinSquare is a zero
 	 */
-	public int[][] getLatinSquare() {
-		return LatinSquare;
-	}
-
-	/**
-	 * set LatinSquare instance attribute
-	 * 
-	 * @version 1.1
-	 * @since Lab #1
-	 * @param latinSquare
-	 *            - pass in an instance of a possible LatinSquare
-	 */
-
-	public void setLatinSquare(int[][] latinSquare) {
-		LatinSquare = latinSquare;
-	}
-
-	/**
-	 * Pass in a one-dimension array, pass back true if there is a duplicate value
-	 * 
-	 * @version 1.1
-	 * @since Lab #1
-	 * @param arr
-	 *            - one dimensional array to check for duplicates
-	 * @return - returns 'true' if any of the elements are duplicate
-	 */
-	public boolean hasDuplicates(int[] arr) {
-
-		// TODO: Return 'true' if any element in arr is duplicate
-
-		boolean hasDuplicates = false;
-		int[] sortedArray = Arrays.copyOf(arr, arr.length);
-		Arrays.sort(sortedArray);
-
-		for (int i = 0; i < sortedArray.length - 1; i++) {
-			if (sortedArray[i] == sortedArray[i + 1]) {
-				hasDuplicates = true;
-				break;
+	public boolean ContainsZero() {
+		for (int i = 0; i < LatinSquare.length; i++) {
+			for (int j = 0; j < LatinSquare.length; j++) {
+				if (LatinSquare[i][j] == 0) {
+					return true;
+				}
 			}
 		}
-		return hasDuplicates;
+		return false;
+
 	}
 
 	/**
@@ -109,6 +78,73 @@ public class LatinSquare {
 		}
 		return doesElementExist;
 
+	}
+
+	/**
+	 * getColumn - return a one-dimension array from a given column in the
+	 * LatinSquare <br>
+	 * 
+	 * 0 1 2 3 <br>
+	 * 1 2 3 4 <br>
+	 * 3 4 1 2 <br>
+	 * 4 1 3 2 <br>
+	 *
+	 *
+	 * In this example, getColumn(1) would return [1],[2],[4],[1]
+	 *
+	 * @version 1.1
+	 * @since Lab #1
+	 * @param iCol
+	 *            The column you want returned from the two-dimensional array
+	 * @return one dimensional array of values for the given column
+	 */
+	public int[] getColumn(int iCol) {
+
+		// TODO: Return a given column from LatinSquare
+
+		int[] Col = new int[this.LatinSquare.length];
+
+		for (int row = 0; row < this.LatinSquare.length; row++) {
+			Col[row] = LatinSquare[row][iCol];
+		}
+		return Col;
+	}
+
+	/**
+	 * return LatinSquare instance attribute
+	 * 
+	 * @version 1.1
+	 * @since Lab #1
+	 * @return - returns the instance of the LatinSquare
+	 */
+	public int[][] getLatinSquare() {
+		return LatinSquare;
+	}
+
+	/**
+	 * getRow - return a one-dimension array from a given row in the LatinSquare<br>
+	 * 
+	 * 0 1 2 3 <br>
+	 * 1 2 3 4 <br>
+	 * 3 4 1 2 <br>
+	 * 4 1 3 2 <br>
+	 * 
+	 * In this example, getRow(1) would return [1],[2],[3],[4]
+	 * 
+	 * @version 1.1
+	 * @since Lab #1
+	 * @param iRow
+	 *            given row of the two dimensional array to return
+	 * @return one dimensional array of the given row
+	 */
+	public int[] getRow(int iRow) {
+		// TODO: Return a given row from LatinSquare
+
+		int[] Row = new int[this.LatinSquare.length];
+
+		Row = this.LatinSquare[iRow];
+
+		return Row;
 	}
 
 	/**
@@ -147,59 +183,29 @@ public class LatinSquare {
 	}
 
 	/**
-	 * getColumn - return a one-dimension array from a given column in the
-	 * LatinSquare <br>
+	 * Pass in a one-dimension array, pass back true if there is a duplicate value
 	 * 
-	 * 0 1 2 3 <br>
-	 * 1 2 3 4 <br>
-	 * 3 4 1 2 <br>
-	 * 4 1 3 2 <br>
-	 *
-	 *
-	 * In this example, getColumn(1) would return [1],[2],[4],[1]
-	 *
 	 * @version 1.1
 	 * @since Lab #1
-	 * @param iCol
-	 *            The column you want returned from the two-dimensional array
-	 * @return one dimensional array of values for the given column
+	 * @param arr
+	 *            - one dimensional array to check for duplicates
+	 * @return - returns 'true' if any of the elements are duplicate
 	 */
-	public int[] getColumn(int iCol) {
+	public boolean hasDuplicates(int[] arr) {
 
-		// TODO: Return a given column from LatinSquare
+		// TODO: Return 'true' if any element in arr is duplicate
 
-		int[] Col = new int[this.LatinSquare.length];
+		boolean hasDuplicates = false;
+		int[] sortedArray = Arrays.copyOf(arr, arr.length);
+		Arrays.sort(sortedArray);
 
-		for (int row = 0; row < this.LatinSquare.length; row++) {
-			Col[row] = LatinSquare[row][iCol];
+		for (int i = 0; i < sortedArray.length - 1; i++) {
+			if (sortedArray[i] == sortedArray[i + 1]) {
+				hasDuplicates = true;
+				break;
+			}
 		}
-		return Col;
-	}
-
-	/**
-	 * getRow - return a one-dimension array from a given row in the LatinSquare<br>
-	 * 
-	 * 0 1 2 3 <br>
-	 * 1 2 3 4 <br>
-	 * 3 4 1 2 <br>
-	 * 4 1 3 2 <br>
-	 * 
-	 * In this example, getRow(1) would return [1],[2],[3],[4]
-	 * 
-	 * @version 1.1
-	 * @since Lab #1
-	 * @param iRow
-	 *            given row of the two dimensional array to return
-	 * @return one dimensional array of the given row
-	 */
-	public int[] getRow(int iRow) {
-		// TODO: Return a given row from LatinSquare
-
-		int[] Row = new int[this.LatinSquare.length];
-
-		Row = this.LatinSquare[iRow];
-
-		return Row;
+		return hasDuplicates;
 	}
 
 	/**
@@ -249,21 +255,15 @@ public class LatinSquare {
 	}
 
 	/**
-	 * ContainsZero - return 'true' if any element in the LatinSquare is a zero
+	 * set LatinSquare instance attribute
 	 * 
 	 * @version 1.1
 	 * @since Lab #1
-	 * @return - returns 'true' if any element in the LatinSquare is a zero
+	 * @param latinSquare
+	 *            - pass in an instance of a possible LatinSquare
 	 */
-	public boolean ContainsZero() {
-		for (int i = 0; i < LatinSquare.length; i++) {
-			for (int j = 0; j < LatinSquare.length; j++) {
-				if (LatinSquare[i][j] == 0) {
-					return true;
-				}
-			}
-		}
-		return false;
 
+	public void setLatinSquare(int[][] latinSquare) {
+		LatinSquare = latinSquare;
 	}
 }
