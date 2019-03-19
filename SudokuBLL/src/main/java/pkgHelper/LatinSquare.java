@@ -207,6 +207,22 @@ public class LatinSquare {
 		}
 		return hasDuplicates;
 	}
+	
+	@override
+	protected boolean hasDuplicates() {
+		
+		for(int i = 0; i < this.LatinSquare.length; i++) {
+			if(hasDuplicates (getRow(i)))
+				return true;	
+		}
+		
+		for(int j = 0; j < this.LatinSquare.length; j++) {
+			if(hasDuplicates (getColumn(j)))
+				return true;	
+		}
+		
+		return false;
+	}
 
 	/**
 	 * isLatinSquare - return 'true' if: Each row and column doesn't contain
